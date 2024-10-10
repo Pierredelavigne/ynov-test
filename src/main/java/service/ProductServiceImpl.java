@@ -1,39 +1,41 @@
 package service;
 
-import jakarta.persistence.Id;
+import dto.ProductDto;
 import model.Product;
+import repository.ProductRepository;
+import utils.DTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ProductRepository;
 
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
 
-
     @Override
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductDto> getAllProducts() {
+        // .stream() permet de mettre la liste reçu en 'flux' qui va permettre d'effectuer des modification sur cette liste
+        return productRepository.findAll().stream().map(product -> DTOMapper.toProductDTO(product)).toList();
     }
 
     @Override
-    public Product getProductById(Long id) {
-        return productRepository.findById(id).get();
+    public ProductDto getProductById(Long id) {
+        return DTOMapper.toProductDTO(productRepository.findById(id).get());
     }
 
     @Override
-    public Product addProduct(Product product) {
-        return productRepository.save(product);
+    public ProductDto addProduct(ProductDto productDTO) {
+        Product product = DTOMapper.toProduct(productDTO);
+        return DTOMapper.toProductDTO(productRepository.save(product));
     }
 
     @Override
-    public Product updateProduct(Product product) {
-        return productRepository.save(product);
-    }
+    public ProductDto updateProduct(ProductDto productDTO) {
+        Product product = DTOMapper.toProduct(productDTO);
+        return DTOMapper.toProductDTO(productRepository.save(product));    }
 
     @Override
     public void deleteProduct(Long id) {
