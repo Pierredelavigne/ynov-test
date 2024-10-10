@@ -1,6 +1,8 @@
 package utils;
 
+import dto.OrderDTO;
 import dto.ProductDto;
+import model.Order;
 import model.Product;
 import org.springframework.stereotype.Component;
 
