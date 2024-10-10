@@ -1,6 +1,7 @@
 package service;
 
 import dto.ProductDto;
+import exception.ResourceNotFoundException;
 import model.Product;
 import repository.ProductRepository;
 import utils.DTOMapper;
@@ -23,7 +24,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public ProductDto getProductById(Long id) {
-        return DTOMapper.toProductDTO(productRepository.findById(id).get());
+        Product product = productRepository.findById(id).
+                orElseThrow(()-> new ResourceNotFoundException("Product Not found"));
+        return DTOMapper.toProductDTO(product);
     }
 
     @Override
@@ -37,8 +40,11 @@ public class ProductServiceImpl implements ProductService{
         Product product = DTOMapper.toProduct(productDTO);
         return DTOMapper.toProductDTO(productRepository.save(product));    }
 
+
     @Override
     public void deleteProduct(Long id) {
+        productRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Product not found"));
         productRepository.deleteById(id);
     }
 }
