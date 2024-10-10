@@ -1,11 +1,8 @@
-package model;
+package com.example.ntier.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+
 
 import java.time.LocalDate;
 
@@ -14,12 +11,17 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String orderNumber;
     private LocalDate orderDate;
 
     @ManyToOne
     private Product product;
+
 }

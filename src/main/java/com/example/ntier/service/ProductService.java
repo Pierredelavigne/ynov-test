@@ -1,7 +1,6 @@
-package service;
+package com.example.ntier.service;
 
-import dto.ProductDto;
-import model.Product;
+import com.example.ntier.dto.ProductDto;
 
 import java.util.List;
 

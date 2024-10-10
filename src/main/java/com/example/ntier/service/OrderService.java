@@ -1,6 +1,6 @@
-package service;
+package com.example.ntier.service;
 
-import dto.OrderDTO;
+import com.example.ntier.dto.OrderDTO;
 
 import java.util.List;
 

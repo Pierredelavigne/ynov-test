@@ -1,4 +1,4 @@
-package dto;
+package com.example.ntier.dto;
 
 import lombok.*;
 

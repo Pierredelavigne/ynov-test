@@ -1,14 +1,11 @@
-package controller;
+package com.example.ntier.controller;
 
-import dto.ProductDto;
-import model.Product;
-import service.ProductService;
-import jakarta.annotation.Resource;
+import com.example.ntier.dto.ProductDto;
+import com.example.ntier.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

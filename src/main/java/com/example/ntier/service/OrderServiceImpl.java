@@ -1,10 +1,14 @@
-package service;
+package com.example.ntier.service;
 
-import dto.OrderDTO;
+import com.example.ntier.dto.OrderDTO;
+import com.example.ntier.repository.OrderRepository;
 
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
+
+    private final OrderRepository orderRepository;
+
     @Override
     public List<OrderDTO> getAllOrders() {
         return List.of();
@@ -12,7 +16,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO getOrderById(Long id) {
-        return null;
+        Or
+
+        return ;
     }
 
     @Override

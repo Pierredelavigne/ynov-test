@@ -1,12 +1,11 @@
-package service;
+package com.example.ntier.service;
 
-import dto.ProductDto;
-import exception.ResourceNotFoundException;
-import model.Product;
-import repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.ntier.dto.ProductDto;
+import com.example.ntier.exception.ResourceNotFoundException;
+import com.example.ntier.model.Product;
+import com.example.ntier.repository.ProductRepository;
 import org.springframework.stereotype.Service;
-import utils.DTOMapper;
+import com.example.ntier.utils.DTOMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
