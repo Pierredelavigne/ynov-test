@@ -7,11 +7,13 @@ public class Main {
     public static void main(String[] args) {
 
         Shape circle = new Circle(5);
-        // Shape rectangle = new Rectangle(4, 6);
+        Shape rectangle = new Rectangle(4, 6);
+        Shape triangle = new Triangle(3, 4);
 
         List<Shape> shapes = new ArrayList<>();
         shapes.add(circle);
-        //shapes.add(rectangle);
+        shapes.add(rectangle);
+        shapes.add(triangle);
 
         ShapeCalculator calculator = new ShapeCalculator();
         double totalArea = calculator.calculateTotalArea(shapes);
