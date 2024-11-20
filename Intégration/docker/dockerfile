@@ -1,0 +1,27 @@
+# Utilise l'image de base Ubuntu
+FROM ubuntu:20.04
+
+# Définir l'utilisateur à root
+USER root
+
+# Met à jour les paquets et installe des outils de base
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    vim \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers de l'hôte dans le conteneur (si nécessaire)
+# COPY . /app
+
+# Exposer un port (si nécessaire)
+# EXPOSE 8080
+
+# Commande par défaut du conteneur
+CMD ["bash"]
