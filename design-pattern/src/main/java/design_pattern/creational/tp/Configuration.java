@@ -1,27 +1,38 @@
-package main.java.design_pattern.creational.tp;
+package org.example.creational.tp.singleton;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
-    private static Configuration instances;
+    private static Configuration instance;
+    private Map<String, String> settings;
 
-    private static Map<String, String> settings = new HashMap<>();
 
-    private Configuration() {}
-
-    public static  Configuration getInstance() {
-        if (instances == null) {
-            instances = new Configuration();
-        }
-        return instances;
+    private Configuration() {
+        settings = new HashMap<>();
+        loadDefaultSettings();
     }
 
-    public static String getSetting(String key) {
+    public static synchronized Configuration getInstance() {
+        if (instance == null) {
+            instance = new Configuration();
+        }
+        return instance;
+    }
+
+    private void loadDefaultSettings() {
+        settings.put("db_url", "jdbc:mysql://localhost:3306/mydb");
+        settings.put("api_key", "defaultApiKey");
+        settings.put("environment", "development");
+    }
+
+
+    public String getSetting(String key) {
         return settings.get(key);
     }
 
-    public static void setSetting(String key, String value) {
+
+    public void setSetting(String key, String value) {
         settings.put(key, value);
     }
 }
