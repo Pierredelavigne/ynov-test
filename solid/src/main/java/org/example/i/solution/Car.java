@@ -1,7 +1,5 @@
 package org.example.i.solution;
 
-import org.example.i.problem.Vehicle;
-
 public class Car implements Drivable {
 
     @Override
